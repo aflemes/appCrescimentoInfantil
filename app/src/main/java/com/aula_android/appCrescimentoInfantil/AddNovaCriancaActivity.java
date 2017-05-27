@@ -14,9 +14,9 @@ import android.widget.EditText;
 public class AddNovaCriancaActivity extends AppCompatActivity {
     private long idLinha;
     private EditText txtNome;
-    private EditText txtCidade;
-    private EditText txtTelefone;
-    private EditText txtVendas;
+    private EditText txtSexo;
+    private EditText txtDtNascimento;
+
     private Button btnSalvar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +27,10 @@ public class AddNovaCriancaActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Adicionar novo cliente");
 
         txtNome = (EditText) findViewById(R.id.txtNome);
-        txtCidade = (EditText) findViewById(R.id.txtCidade);
-        txtTelefone = (EditText) findViewById(R.id.txtTelefone);
+        txtSexo = (EditText) findViewById(R.id.txtSexo);
+        txtDtNascimento = (EditText) findViewById(R.id.txtDtNascimento);
 
-        txtTelefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher("BR"));
-
-        txtVendas = (EditText) findViewById(R.id.txtVendas);
+        txtDtNascimento.addTextChangedListener(new PhoneNumberFormattingTextWatcher("BR"));
 
         Bundle extras = getIntent().getExtras();
 
@@ -40,9 +38,8 @@ public class AddNovaCriancaActivity extends AppCompatActivity {
         if (extras != null){
             idLinha = extras.getLong("idLinha");
             txtNome.setText(extras.getString("nome"));
-            txtCidade.setText(extras.getString("cidade"));
-            txtTelefone.setText(extras.getString("telefone"));
-            txtVendas.setText(extras.getString("vendas"));
+            txtSexo.setText(extras.getString("sexo"));
+            txtDtNascimento.setText(extras.getString("dtnascimento"));
         }
 
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
@@ -94,18 +91,16 @@ public class AddNovaCriancaActivity extends AppCompatActivity {
         try{
             databaseConnector.open();
             if (getIntent().getExtras() == null){
-                databaseConnector.insereCliente(
+                databaseConnector.insereCrianca(
                         txtNome.getText().toString(),
-                        txtCidade.getText().toString(),
-                        txtTelefone.getText().toString(),
-                        txtVendas.getText().toString());
+                        txtSexo.getText().toString(),
+                        txtDtNascimento.getText().toString());
             }
             else{
-                databaseConnector.alteraCliente(idLinha,
+                databaseConnector.alteraCrianca(idLinha,
                         txtNome.getText().toString(),
-                        txtCidade.getText().toString(),
-                        txtTelefone.getText().toString(),
-                        txtVendas.getText().toString());
+                        txtSexo.getText().toString(),
+                        txtDtNascimento.getText().toString());
             }
             databaseConnector.close();
         }catch(SQLException e){

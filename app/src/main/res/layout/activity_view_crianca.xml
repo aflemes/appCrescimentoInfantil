@@ -15,27 +15,19 @@
         android:paddingLeft="5dp"
         />
     <TextView
-        android:id="@+id/txtCidade"
+        android:id="@+id/txtSexo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtNome"
-        android:text="@string/cidade"
+        android:text="@string/sexo"
         android:textColor="#333333"
         android:paddingLeft="5dp"   />
     <TextView
-        android:id="@+id/txtTelefone"
+        android:id="@+id/txtDtNascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtNome"
         android:layout_alignParentRight="true"
-        android:text="@string/telefone"
-        android:textColor="#333333"  />
-    <TextView
-        android:id="@+id/txtVendas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtTelefone"
-        android:layout_alignParentRight="true"
-        android:text="@string/vendas"
+        android:text="@string/dtnascimento"
         android:textColor="#333333"  />
 </RelativeLayout>

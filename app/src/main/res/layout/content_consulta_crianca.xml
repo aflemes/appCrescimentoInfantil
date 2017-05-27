@@ -41,14 +41,14 @@
         <TextView
             android:id="@+id/textView2"
             style="@style/LivroLabelTextView"
-            android:text="@string/rotuloCidade"
+            android:text="@string/rotuloSexo"
             android:textColor="@color/preto"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblCidade"
             style="@style/LivroTextView"
-            android:text="@string/cidade"
+            android:text="@string/sexo"
             android:textColor="@color/preto"
             android:textSize="20sp" />
 
@@ -62,14 +62,14 @@
         <TextView
             android:id="@+id/textView3"
             style="@style/LivroLabelTextView"
-            android:text="@string/rotuloTelefone"
+            android:text="@string/rotuloDtNascimento"
             android:textColor="@color/preto"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lblTelefone"
             style="@style/LivroTextView"
-            android:text="@string/telefone"
+            android:text="@string/dtnascimento"
             android:textColor="@color/preto"
             android:textSize="20sp" />
 

@@ -12,21 +12,19 @@ import java.util.ArrayList;
 public class DBAdapter {
     public static final String KEY_ROWID = "_id";
     public static final String KEY_NOME = "nome";
-    public static final String KEY_CIDADE = "cidade";
-    public static final String KEY_TELEFONE = "telefone";
-    public static final String KEY_VENDAS = "vendas";
+    public static final String KEY_SEXO = "sexo";
+    public static final String KEY_NASCIMENTO = "dtnascimento";
     private static final String TAG = "DBAdapter";
 
-    private static final String DATABASE_NAME = "dbcliente";
-    private static final String DATABASE_TABLE = "clientes";
+    private static final String DATABASE_NAME = "databse";
+    private static final String DATABASE_TABLE = "crescimento_infantil";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String CRIA_DATABASE = "create table clientes " +
+    private static final String CRIA_DATABASE = "create table crescimento_infantil " +
             "(_id integer primary key autoincrement, " +
             " nome text not null," +
-            " cidade text not null," +
-            " telefone text not null," +
-            " vendas text not null);" ;
+            " sexo text not null," +
+            " dtnascimento text not null);" ;
     private final Context context;
     private DatabaseHelper DBHelper;
     private SQLiteDatabase db;
@@ -75,20 +73,19 @@ public class DBAdapter {
     }
 
     //---insere um Livro na base da dados ---
-    public long insereCliente(String nome, String cidade, String telefone, String vendas){
+    public long insereCrianca(String nome, String sexo, String dtnascimento){
         ContentValues dados = new ContentValues();
         dados.put(KEY_NOME, nome);
-        dados.put(KEY_CIDADE, cidade);
-        dados.put(KEY_TELEFONE, telefone);
-        dados.put(KEY_VENDAS, vendas);
+        dados.put(KEY_SEXO, sexo);
+        dados.put(KEY_NASCIMENTO, dtnascimento);
         return db.insert(DATABASE_TABLE, null, dados);
     }
 
     //--- exclui um cliente ---
-    public boolean excluiCliente(long idLinha){
+    public boolean excluiCrianca(long idLinha){
         return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + idLinha, null) > 0;
     }
-    public boolean excluiTodosCliente(ArrayList<Integer> idLinha){
+    public boolean excluiTodasCriancas(ArrayList<Integer> idLinha){
 
         for (int i=0;i<idLinha.size();i++){
             db.delete(DATABASE_TABLE, KEY_ROWID + "=" + idLinha.get(i), null);
@@ -97,29 +94,22 @@ public class DBAdapter {
     }
 
     //--- devolve todos os clientes---
-    public Cursor getTodosClientesByName(String nomeAux){
-        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_CIDADE,KEY_TELEFONE,KEY_VENDAS};
+    public Cursor getTodosCriancasByName(String nomeAux){
+        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_SEXO,KEY_NASCIMENTO};
         String whereClause = "nome like '%" + nomeAux + "%'";
 
         return db.query(DATABASE_TABLE,colunas, whereClause, null, null, null, null);
     }
-    public Cursor getTodosClientesByCity(String nomeAux){
-        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_CIDADE,KEY_TELEFONE,KEY_VENDAS};
-        String whereClause = "cidade like '%" + nomeAux + "%'";
 
-        return db.query(DATABASE_TABLE,colunas, whereClause, null, null, null, null);
-    }
-
-    //--- devolve todos os clientes por nome---
-    public Cursor getTodosClientes(){
-        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_CIDADE,KEY_TELEFONE,KEY_VENDAS};
+    public Cursor getTodasCriancas(){
+        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_SEXO,KEY_NASCIMENTO};
         return db.query(DATABASE_TABLE,colunas, null, null, null, null, null);
     }
 
     //--- recupera uma linha (livro) ---
-    public Cursor getCliente(long idLinha) throws SQLException{
+    public Cursor getCrianca(long idLinha) throws SQLException{
 
-        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_CIDADE,KEY_TELEFONE,KEY_VENDAS};
+        String colunas[] ={KEY_ROWID,KEY_NOME,KEY_SEXO,KEY_NASCIMENTO};
         String linhaAcessada = KEY_ROWID + "=" + idLinha;
         Cursor mCursor = db.query(DATABASE_TABLE, colunas,linhaAcessada,null,null,null,null,null);
 
@@ -129,15 +119,13 @@ public class DBAdapter {
         return mCursor;
     }
 
-    //--- atualiza um titulo---
-    public boolean alteraCliente(long idLinha, String nome, String cidade,String telefone, String vendas){
+    public boolean alteraCrianca(long idLinha, String nome, String sexo,String dtnascimento){
         ContentValues dados = new ContentValues();
         String linhaAcessada = KEY_ROWID + "=" + idLinha;
 
         dados.put(KEY_NOME, nome);
-        dados.put(KEY_CIDADE, cidade);
-        dados.put(KEY_TELEFONE, telefone);
-        dados.put(KEY_VENDAS, vendas);
+        dados.put(KEY_SEXO, sexo);
+        dados.put(KEY_NASCIMENTO, dtnascimento);
 
         return db.update(DATABASE_TABLE, dados, linhaAcessada, null)>0;
     }

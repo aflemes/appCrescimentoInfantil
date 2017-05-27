@@ -48,7 +48,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
         @Override
         protected Cursor doInBackground(Long... params){
             databaseConnector.open();
-            return databaseConnector.getCliente(params[0]);
+            return databaseConnector.getCrianca(params[0]);
         }
         // Usa o Cursor retornado do método doInBackground
         @Override
@@ -118,7 +118,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
                             protected Object doInBackground(Long... params){
                                 try{
                                     conexaoDB.open();
-                                    conexaoDB.excluiCliente(params[0]);
+                                    conexaoDB.excluiCrianca(params[0]);
                                     conexaoDB.close();
                                 }
                                 catch(SQLException e){

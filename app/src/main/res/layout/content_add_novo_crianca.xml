@@ -33,11 +33,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cidade"
+        android:text="@string/sexo"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/txtCidade"
+        android:id="@+id/txtSexo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -47,11 +47,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/telefone"
+        android:text="@string/dtnascimento"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/txtTelefone"
+        android:id="@+id/txtDtNascimento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
