@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.aula_android.appCrescimentoInfantil.MainActivity">
+
+    <item
+        android:id="@+id/addLivroItem"
+        android:alphabeticShortcut="e"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/menuitem_add_cliente"
+        android:titleCondensed="@string/menuitem_add_cliente"></item>
+
+    <item android:id="@+id/removeCliente"
+        android:title="@string/menuitem_remove"
+        android:icon="@android:drawable/ic_menu_add"
+        android:titleCondensed="@string/menuitem_remove"
+        android:alphabeticShortcut="e"></item>
+</menu>

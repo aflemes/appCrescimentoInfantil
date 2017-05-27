@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="#cccccc"
+    >
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nome"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:paddingLeft="5dp"
+        />
+    <TextView
+        android:id="@+id/txtCidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNome"
+        android:text="@string/cidade"
+        android:textColor="#333333"
+        android:paddingLeft="5dp"   />
+    <TextView
+        android:id="@+id/txtTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNome"
+        android:layout_alignParentRight="true"
+        android:text="@string/telefone"
+        android:textColor="#333333"  />
+    <TextView
+        android:id="@+id/txtVendas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTelefone"
+        android:layout_alignParentRight="true"
+        android:text="@string/vendas"
+        android:textColor="#333333"  />
+</RelativeLayout>

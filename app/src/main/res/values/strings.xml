@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Cliente</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menuitem_add_cliente">Adicionar uma Criança</string>
+    <string name="menuitem_remove">Remover TODAS da seleção</string>
+    <string name="menuitem_edit_cliente">Alterar uma Criança</string>
+    <string name="menuitem_delete_cliente">Excluir uma Criança</string>
+
+    <string name="title_activity_main">Clientes</string>
+
+    <string name="nome">Nome do Cliente</string>
+    <string name="cidade">Cidade do Cliente</string>
+    <string name="telefone">Telefone do Cliente</string>
+    <string name="vendas">Vendas do Cliente</string>
+
+    <string name="rotuloNome">Nome:</string>
+    <string name="rotuloCidade">Cidade:</string>
+    <string name="rotuloTelefone">Telefone:</string>
+    <string name="rotuloVendas">Qtde. Vendas:</string>
+    <string name="gravar">Gravar Cliente</string>
+
+    <string name="tituloErro">Necessário preencher o nome da criança!</string>
+    <string name="mensagemErro">Você deve digitar um nome para a criança!</string>
+    <string name="botaoErro">OK</string>
+    <string name="botao_cancel">Cancel</string>
+    <string name="botao_delete">Delete</string>
+
+    <string name="confirmaTitulo">Você está certo?</string>
+    <string name="confirmaMensagem">Essa ação irá excluir permanentemente o registro da criança!</string>
+    <string name="confirmaMensagemSelecao">Essa ação irá excluir permanentement TODOS os registros da criança!</string>
+    <string name="title_activity_add_nova_crianca">AddNovaCriancaActivity</string>
+    <string name="title_activity_view_criancas">ViewCraincaActivity</string>
+    <string name="title_activity_consulta_criancas">ConsultaCriancasActivity</string>
+
+
+    <string-array name="filtros">
+        <item>Todos</item>
+        <item>Nome</item>
+        <item>Cidade</item>
+        <item>Acima do valor</item>
+    </string-array>
+
+</resources>
