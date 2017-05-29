@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/lblNome"
-            style="@style/LivroTextView"
+            style="@style/CriancaTextView"
             android:text="@string/nome"
             android:textColor="@color/preto"
             android:textSize="20sp" />
@@ -35,8 +35,8 @@
 
     <TableRow
         android:id="@+id/tableRow2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView2"
@@ -46,8 +46,8 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/lblCidade"
-            style="@style/LivroTextView"
+            android:id="@+id/lblSexo"
+            style="@style/CriancaTextView"
             android:text="@string/sexo"
             android:textColor="@color/preto"
             android:textSize="20sp" />
@@ -57,40 +57,20 @@
     <TableRow
         android:id="@+id/tableRow3"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent" >
 
         <TextView
             android:id="@+id/textView3"
             style="@style/LivroLabelTextView"
+            android:layout_height="match_parent"
             android:text="@string/rotuloDtNascimento"
             android:textColor="@color/preto"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/lblTelefone"
-            style="@style/LivroTextView"
+            android:id="@+id/lblNascimento"
+            style="@style/CriancaTextView"
             android:text="@string/dtnascimento"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/LivroLabelTextView"
-            android:text="@string/rotuloVendas"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/lblVendas"
-            style="@style/LivroTextView"
-            android:text="@string/vendas"
             android:textColor="@color/preto"
             android:textSize="20sp" />
 

@@ -13,7 +13,7 @@ public class DBAdapter {
     public static final String KEY_ROWID = "_id";
     public static final String KEY_NOME = "nome";
     public static final String KEY_SEXO = "sexo";
-    public static final String KEY_NASCIMENTO = "dtnascimento";
+    public static final String KEY_NASCIMENTO = "nascimento";
     private static final String TAG = "DBAdapter";
 
     private static final String DATABASE_NAME = "databse";
@@ -24,7 +24,7 @@ public class DBAdapter {
             "(_id integer primary key autoincrement, " +
             " nome text not null," +
             " sexo text not null," +
-            " dtnascimento text not null);" ;
+            " nascimento text not null);" ;
     private final Context context;
     private DatabaseHelper DBHelper;
     private SQLiteDatabase db;

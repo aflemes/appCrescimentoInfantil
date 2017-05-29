@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/editItem"
-        android:title="@string/menuitem_edit_cliente"
+        android:title="@string/menuitem_edit_crianca"
         android:orderInCategory="1" android:alphabeticShortcut="e"
-        android:titleCondensed="@string/menuitem_edit_cliente"
+        android:titleCondensed="@string/menuitem_edit_crianca"
         android:icon="@android:drawable/ic_menu_edit">
     </item>
     <item android:id="@+id/deleteItem"
-        android:title="@string/menuitem_delete_cliente"
+        android:title="@string/menuitem_delete_crianca"
         android:orderInCategory="2" android:alphabeticShortcut="d"
-        android:titleCondensed="@string/menuitem_delete_cliente"
+        android:titleCondensed="@string/menuitem_delete_crianca"
+        android:icon="@android:drawable/ic_delete">
+    </item>
+    <item android:id="@+id/deleteItem"
+        android:title="@string/menuitem_gerar_grafico"
+        android:orderInCategory="2" android:alphabeticShortcut="d"
+        android:titleCondensed="@string/menuitem_gerar_grafico"
         android:icon="@android:drawable/ic_delete">
     </item>
 </menu>

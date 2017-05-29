@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
         btnBuscar.setOnClickListener(buscarCriancaButtonClicked);
 
         // mapeia cada coluna da tabela com um componente da tela
-        String[] origem = new String[]{"nome","sexo","dtnascimento"};
-        int[] destino = new int[] { R.id.txtNome, R.id.txtSexo,R.id.txtDtNascimento};
+        String[] origem = new String[]{"nome","sexo","nascimento"};
+        int[] destino = new int[] { R.id.txtNome, R.id.spiSexo,R.id.txtDtNascimento};
         int flags = 0;
 
-        //criancaAdapter = new SimpleCursorAdapter(MainActivity.this,R.layout.activity_view_crianca,null,origem,destino,flags);
-        //criancaListView.setAdapter(criancaAdapter);
+        criancaAdapter = new SimpleCursorAdapter(MainActivity.this,R.layout.activity_view_crianca,null,origem,destino,flags);
+        criancaListView.setAdapter(criancaAdapter);
 
     }
 
@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (spinner.getSelectedItem().toString()){
             case "Nome":
-                new getClientesByName().execute();
+                new getCriancaByName().execute();
                 break;
             case "Todos":
-                new ObtemClientes().execute();
+                new getAllCrianca().execute();
                 break;
         }
     }
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     // Quando precisamos dos resultados de uma operação do BD na thread da
     // interface gráfica, vamos usar AsyncTask para efetuar a operação em
     // uma thread e receber os resultados na thread da interface gráfica
-    private class ObtemClientes extends AsyncTask<Object, Object, Cursor> {
+    private class getAllCrianca extends AsyncTask<Object, Object, Cursor> {
         DBAdapter conexaoDB = new DBAdapter(MainActivity.this);
         @Override
         protected Cursor doInBackground(Object... params){
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             conexaoDB.close();
         }
     }
-    private class getClientesByName extends AsyncTask<Object, Object, Cursor> {
+    private class getCriancaByName extends AsyncTask<Object, Object, Cursor> {
         DBAdapter conexaoDB = new DBAdapter(MainActivity.this);
         @Override
         protected Cursor doInBackground(Object... params){

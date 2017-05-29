@@ -2,10 +2,11 @@
     <string name="app_name">Crescimento Infantil</string>
     <string name="action_settings">Configurações</string>
 
-    <string name="menuitem_add_cliente">Adicionar uma Criança</string>
+    <string name="menuitem_add_crianca">Adicionar uma Criança</string>
     <string name="menuitem_remove">Remover TODAS da seleção</string>
-    <string name="menuitem_edit_cliente">Alterar uma Criança</string>
-    <string name="menuitem_delete_cliente">Excluir uma Criança</string>
+    <string name="menuitem_edit_crianca">Alterar uma Criança</string>
+    <string name="menuitem_delete_crianca">Excluir uma Criança</string>
+    <string name="menuitem_gerar_grafico"> Gráfico do Crescimento</string>
 
     <string name="title_activity_main">Clientes</string>
 
@@ -16,9 +17,8 @@
 
     <string name="rotuloNome">Nome:</string>
     <string name="rotuloSexo">Sexo:</string>
-    <string name="rotuloDtNascimento">Data de nascimento:</string>
-    <string name="rotuloVendas">Qtde. Vendas:</string>
-    <string name="gravar">Gravar Cliente</string>
+    <string name="rotuloDtNascimento">Data \nde nascimento:</string>
+    <string name="gravar">Salvar</string>
 
     <string name="tituloErro">Necessário preencher o nome da criança!</string>
     <string name="mensagemErro">Você deve digitar um nome para a criança!</string>
@@ -33,12 +33,14 @@
     <string name="title_activity_view_criancas">ViewCraincaActivity</string>
     <string name="title_activity_consulta_criancas">ConsultaCriancasActivity</string>
 
+    <string-array name="sexo">
+        <item>Masculino</item>
+        <item>Feminino</item>
+    </string-array>
 
     <string-array name="filtros">
         <item>Todos</item>
         <item>Nome</item>
-        <item>Cidade</item>
-        <item>Acima do valor</item>
     </string-array>
 
 </resources>

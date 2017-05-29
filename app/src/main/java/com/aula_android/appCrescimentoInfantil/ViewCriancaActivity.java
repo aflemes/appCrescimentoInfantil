@@ -9,15 +9,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewCriancaActivity extends AppCompatActivity {
     private long idLinha;
     private TextView lblNome;
-    private TextView lblCidade;
-    private TextView lblTelefone;
+    private TextView lblSexo;
+    private TextView lblNascimento;
     private TextView lblVendas;
 
     @Override
@@ -29,9 +31,8 @@ public class ViewCriancaActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Consulta Criança");
 
         lblNome = (TextView) findViewById(R.id.lblNome);
-        lblCidade = (TextView) findViewById(R.id.lblCidade);
-        lblTelefone = (TextView) findViewById(R.id.lblTelefone);
-        lblVendas = (TextView) findViewById(R.id.lblVendas);
+        lblSexo = (TextView) findViewById(R.id.lblSexo);
+        lblNascimento = (TextView) findViewById(R.id.lblNascimento);
 
         Bundle extras = getIntent().getExtras();
         idLinha = extras.getLong(MainActivity.LINHA_ID);
@@ -58,15 +59,13 @@ public class ViewCriancaActivity extends AppCompatActivity {
             result.moveToFirst();
 
             int nomeIndex = result.getColumnIndex("nome");
-            int cidadeIndex = result.getColumnIndex("cidade");
-            int telefoneIndex = result.getColumnIndex("telefone");
-            int vendasIndex = result.getColumnIndex("vendas");
+            int sexoIndex = result.getColumnIndex("sexo");
+            int nascimentoIndex = result.getColumnIndex("nascimento");
 
             lblNome.setText(result.getString(nomeIndex));
-            lblCidade.setText(result.getString(cidadeIndex));
-            lblTelefone.setText(result.getString(telefoneIndex));
-            lblVendas.setText(result.getString(vendasIndex));
-
+            lblSexo.setText(result.getString(sexoIndex));
+            lblNascimento.setText(result.getString(nascimentoIndex));
+            
             result.close();
             databaseConnector.close();
         }
@@ -80,27 +79,28 @@ public class ViewCriancaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+        String dtNascto = lblNascimento.getText().toString();
+
         switch (item.getItemId()){
             case R.id.editItem:
-                Intent addEditCliente = new Intent(this, AddNovaCriancaActivity.class);
+                Intent addEditCrianca = new Intent(this, AddNovaCriancaActivity.class);
 
-                addEditCliente.putExtra(MainActivity.LINHA_ID, idLinha);
-                addEditCliente.putExtra("nome", lblNome.getText());
-                addEditCliente.putExtra("cidade", lblCidade.getText());
-                addEditCliente.putExtra("telefone", lblTelefone.getText());
-                addEditCliente.putExtra("vendas", lblVendas.getText());
+                addEditCrianca.putExtra(MainActivity.LINHA_ID, idLinha);
+                addEditCrianca.putExtra("nome", lblNome.getText());
+                addEditCrianca.putExtra("sexo", lblSexo.getText());
+                addEditCrianca.putExtra("nascimento", dtNascto);
 
-                startActivity(addEditCliente);
+                startActivity(addEditCrianca);
                 return true;
             case R.id.deleteItem:
-                deleteCliente();
+                deleteCrianca();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void deleteCliente(){
+    private void deleteCrianca(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewCriancaActivity.this);
 

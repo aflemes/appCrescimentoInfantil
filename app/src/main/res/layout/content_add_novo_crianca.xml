@@ -36,11 +36,11 @@
         android:text="@string/sexo"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/txtSexo"
+    <Spinner
+        android:id="@+id/spiSexo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:entries="@array/sexo"
         android:ems="10" />
 
     <TextView
@@ -55,21 +55,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:onClick="setDate"
+        android:maxLength="10"
         android:ems="10" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vendas"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/txtVendas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text" />
 
     <Button
         android:id="@+id/btnSalvar"

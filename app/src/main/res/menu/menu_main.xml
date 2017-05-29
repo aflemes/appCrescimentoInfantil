@@ -7,8 +7,8 @@
         android:id="@+id/addLivroItem"
         android:alphabeticShortcut="e"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="@string/menuitem_add_cliente"
-        android:titleCondensed="@string/menuitem_add_cliente"></item>
+        android:title="@string/menuitem_add_crianca"
+        android:titleCondensed="@string/menuitem_add_crianca"></item>
 
     <item android:id="@+id/removeCliente"
         android:title="@string/menuitem_remove"
