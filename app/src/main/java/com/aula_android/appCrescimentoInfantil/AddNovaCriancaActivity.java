@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddNovaCriancaActivity extends AppCompatActivity {
     private long idLinha;
@@ -51,7 +49,7 @@ public class AddNovaCriancaActivity extends AppCompatActivity {
         txtDtNascimento = (EditText) findViewById(R.id.txtDtNascimento);
 
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
-        btnSalvar.setOnClickListener(salvarLivroButtonClicked);
+        btnSalvar.setOnClickListener(salvarCriancaButtonClicked);
 
         initDateDialog();
     }
@@ -66,7 +64,7 @@ public class AddNovaCriancaActivity extends AppCompatActivity {
         showDate(year, month+1, day);
     }
 
-    View.OnClickListener salvarLivroButtonClicked = new View.OnClickListener(){
+    View.OnClickListener salvarCriancaButtonClicked = new View.OnClickListener(){
         public void onClick(View v){
             if (txtNome.getText().length() != 0){
                 AsyncTask<Object, Object, Object> salvaClienteTask = new AsyncTask<Object, Object, Object>(){

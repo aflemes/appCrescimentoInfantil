@@ -12,8 +12,12 @@
 
     <string name="nome">Nome</string>
     <string name="sexo">Sexo</string>
-    <string name="dtnascimento">Data de Nascimento</string>
+    <string name="dtnascimento"> Data de Nascimento</string>
+    <string name="dtatualizacao">Data da medição</string>
     <string name="vendas">Vendas do Cliente</string>
+
+    <string name="lblPeso">Peso</string>
+    <string name="lblAltura">Altura</string>
 
     <string name="rotuloNome">Nome:</string>
     <string name="rotuloSexo">Sexo:</string>
@@ -32,6 +36,8 @@
     <string name="title_activity_add_nova_crianca">AddNovaCriancaActivity</string>
     <string name="title_activity_view_criancas">ViewCraincaActivity</string>
     <string name="title_activity_consulta_criancas">ConsultaCriancasActivity</string>
+    <string name="btn_adicionar_progresso">Adicionar</string>
+    <string name="btn_remover_progresso">  Remover</string>
 
     <string-array name="sexo">
         <item>Masculino</item>

@@ -75,4 +75,38 @@
             android:textSize="20sp" />
 
     </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp"/>
+
+    <TableRow
+        android:id="@+id/tableRowButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/btnAdicionar"
+            android:width="30dp"
+            android:text="@string/btn_adicionar_progresso" />
+
+        <Button
+            android:id="@+id/btnRemover"
+            android:width="30dp"
+            android:text="@string/btn_remover_progresso" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRowListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_span="2"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"/>
+    </TableRow>
 </TableLayout>
