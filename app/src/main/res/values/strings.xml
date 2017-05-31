@@ -34,8 +34,9 @@
     <string name="confirmaMensagem">Essa ação irá excluir permanentemente o registro da criança!</string>
     <string name="confirmaMensagemSelecao">Essa ação irá excluir permanentement TODOS os registros da criança!</string>
     <string name="title_activity_add_nova_crianca">AddNovaCriancaActivity</string>
-    <string name="title_activity_view_criancas">ViewCraincaActivity</string>
+    <string name="title_activity_view_criancas">ViewCriancaActivity</string>
     <string name="title_activity_consulta_criancas">ConsultaCriancasActivity</string>
+    <string name="title_activity_add_progresso_crianca">AddNovoProgressoActivity</string>
     <string name="btn_adicionar_progresso">Adicionar</string>
     <string name="btn_remover_progresso">  Remover</string>
 

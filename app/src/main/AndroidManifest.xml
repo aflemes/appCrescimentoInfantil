@@ -28,6 +28,11 @@
             android:name="com.aula_android.appCrescimentoInfantil.ViewCriancaActivity"
             android:label="@string/title_activity_view_criancas"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.aula_android.appCrescimentoInfantil.AddNovoProgressoActivity"
+            android:label="@string/title_activity_add_progresso_crianca"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

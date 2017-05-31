@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,8 @@ public class ViewCriancaActivity extends AppCompatActivity {
     private TextView lblSexo;
     private TextView lblNascimento;
     private TextView lblVendas;
+    /**/
+    private Button btnAdicionar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,18 @@ public class ViewCriancaActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         idLinha = extras.getLong(MainActivity.LINHA_ID);
+
+        btnAdicionar = (Button) findViewById(R.id.btnAdicionar);
+        btnAdicionar.setOnClickListener(openAdicionarProgresso);
     }
+
+    View.OnClickListener openAdicionarProgresso = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent addProgressoCrianca = new Intent(getApplicationContext(), AddNovoProgressoActivity.class);
+            startActivity(addProgressoCrianca);
+        }
+    };
+
     @Override
     protected void onResume(){
         super.onResume();

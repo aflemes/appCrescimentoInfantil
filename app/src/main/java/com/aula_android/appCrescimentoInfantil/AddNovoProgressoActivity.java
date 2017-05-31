@@ -132,12 +132,17 @@ public class AddNovoProgressoActivity extends AppCompatActivity {
     // Salva o progress na base de dados
     private void salvaProgresso(){
         DBAdapter databaseConnector = new DBAdapter(this);
+        int pid = Integer.parseInt(MainActivity.LINHA_ID);
+        float pesoTemp = Float.parseFloat(txtPeso.getText().toString());
+        float alturaTemp = Float.parseFloat(txtAltura.getText().toString());
+
         try{
             databaseConnector.open();
-            databaseConnector.insereCrianca(
-                    txtDtAtualizacao.getText().toString(),
-                    txtPeso.getText().toString(),
-                    txtAltura.getText().toString()
+            databaseConnector.insereDesenvolvimento(
+                    pid,
+                    pesoTemp,
+                    alturaTemp,
+                    txtDtAtualizacao.getText().toString()
             );
 
             databaseConnector.close();
