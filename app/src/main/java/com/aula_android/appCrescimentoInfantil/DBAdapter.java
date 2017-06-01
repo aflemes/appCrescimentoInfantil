@@ -25,7 +25,7 @@ public class DBAdapter {
     private static final String DATABASE_NAME = "databse";
     private static final String DATABASE_TABLE_CRIANCA = "crianca";
     private static final String DATABASE_TABLE_DESENV  = "desenvolvimento_crianca";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String CRIA_TABELA_CRIANCA = "create table crianca " +
             "(_id integer primary key autoincrement, " +
@@ -34,10 +34,11 @@ public class DBAdapter {
             " nascimento text not null);" ;
 
     private static final String CRIA_TABELA_DESENVOLVIMENTO = "create table desenvolvimento_crianca " +
-            "(_id integer primary key," +
-            " dtatualizacao text not null primary key, " +
+            "(_id integer," +
+            " dtatualizacao text not null, " +
             " peso real not null," +
-            " altura real not null);";
+            " altura real not null," +
+            " primary key(_id,dtatualizacao));";
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -96,15 +97,20 @@ public class DBAdapter {
         return db.insert(DATABASE_TABLE_CRIANCA, null, dados);
     }
 
-    public long insereDesenvolvimento(int pid, float altura, float peso, String dtAtualizacao){
+    public long insereDesenvolvimento(long pid, float altura, float peso, String dtAtualizacao){
         ContentValues dados = new ContentValues();
+        dados.put(KEY_ROWID, pid);
         dados.put(KEY_PESO, altura);
         dados.put(KEY_ALTURA, peso);
         dados.put(KEY_ATUALIZACAO, dtAtualizacao);
         return db.insert(DATABASE_TABLE_DESENV, null, dados);
     }
 
-    //--- exclui um cliente ---
+    //--- exclui o desenvolvimento ---
+    public boolean excluiDesenvolvimento(long idLinha){
+        return db.delete(DATABASE_TABLE_DESENV, KEY_ROWID + "=" + idLinha, null) > 0;
+    }
+    //--- exclui uma crianca ---
     public boolean excluiCrianca(long idLinha){
         return db.delete(DATABASE_TABLE_CRIANCA, KEY_ROWID + "=" + idLinha, null) > 0;
     }
@@ -114,6 +120,14 @@ public class DBAdapter {
             db.delete(DATABASE_TABLE_CRIANCA, KEY_ROWID + "=" + idLinha.get(i), null);
         }
         return true;
+    }
+
+    //--- devolve o progresso---
+    public Cursor getProgresso(long idLinha){
+        String colunas[] ={KEY_ROWID,KEY_ATUALIZACAO,KEY_PESO,KEY_ALTURA};
+        String whereClause = "_id = " + String.valueOf(idLinha);
+
+        return db.query(DATABASE_TABLE_DESENV,colunas, whereClause, null, null, null, null);
     }
 
     //--- devolve todos os clientes---

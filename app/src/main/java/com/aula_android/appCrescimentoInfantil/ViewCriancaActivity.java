@@ -14,15 +14,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CursorAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ViewCriancaActivity extends AppCompatActivity {
+    /**/
+    private ListView progressoListView;
+    public static final String LINHA_ID = "idLinha";
     private long idLinha;
     private TextView lblNome;
     private TextView lblSexo;
     private TextView lblNascimento;
     private TextView lblVendas;
+    /**/
+    private CursorAdapter progressoAdapter; // Adaptador para a ListView
     /**/
     private Button btnAdicionar;
 
@@ -43,11 +51,22 @@ public class ViewCriancaActivity extends AppCompatActivity {
 
         btnAdicionar = (Button) findViewById(R.id.btnAdicionar);
         btnAdicionar.setOnClickListener(openAdicionarProgresso);
+
+        // mapeia cada coluna da tabela com um componente da tela
+        String[] origem = new String[]{"dtatualizacao","peso","altura"};
+        int[] destino = new int[] { R.id.txtNome, R.id.spiSexo,R.id.txtDtNascimento};
+        int flags = 0;
+
+        progressoListView = (ListView) findViewById(R.id.listViewProgresso);
+
+        progressoAdapter = new SimpleCursorAdapter(ViewCriancaActivity.this,R.layout.activity_view_crianca,null,origem,destino,flags);
+        progressoListView.setAdapter(progressoAdapter);
     }
 
     View.OnClickListener openAdicionarProgresso = new View.OnClickListener() {
         public void onClick(View v) {
             Intent addProgressoCrianca = new Intent(getApplicationContext(), AddNovoProgressoActivity.class);
+            addProgressoCrianca.putExtra(LINHA_ID, idLinha);
             startActivity(addProgressoCrianca);
         }
     };
@@ -55,7 +74,9 @@ public class ViewCriancaActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+
         new CarregaClienteTask().execute(idLinha);
+        new getProgresso().execute();
     }
     // Executa a consulta em uma thead separada
     private class CarregaClienteTask extends AsyncTask<Long, Object, Cursor> {
@@ -83,6 +104,21 @@ public class ViewCriancaActivity extends AppCompatActivity {
             
             result.close();
             databaseConnector.close();
+        }
+    }
+
+    private class getProgresso extends AsyncTask<Object, Object, Cursor> {
+        DBAdapter conexaoDB = new DBAdapter(ViewCriancaActivity.this);
+        @Override
+        protected Cursor doInBackground(Object... params){
+            conexaoDB.open(); //abre a base de dados
+            return conexaoDB.getProgresso(idLinha);
+        }
+        // usa o cursor retornado pelo doInBackground
+        @Override
+        protected void onPostExecute(Cursor result){
+            progressoAdapter.changeCursor(result); //altera o cursor para um novo cursor
+            conexaoDB.close();
         }
     }
 

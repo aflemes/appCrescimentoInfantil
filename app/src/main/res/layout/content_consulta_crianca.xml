@@ -2,111 +2,108 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_consulta_crianca"
     tools:context="com.aula_android.appCrescimentoInfantil.ViewCriancaActivity">
 
     <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+         android:id="@+id/tableRow1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView1"
-            style="@style/LivroLabelTextView"
-            android:text="@string/rotuloNome"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
+         <TextView
+             android:id="@+id/textView1"
+             style="@style/LivroLabelTextView"
+             android:text="@string/rotuloNome"
+             android:textColor="@color/preto"
+             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/lblNome"
-            style="@style/CriancaTextView"
-            android:text="@string/nome"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
+         <TextView
+             android:id="@+id/lblNome"
+             style="@style/CriancaTextView"
+             android:text="@string/nome"
+             android:textColor="@color/preto"
+             android:textSize="20sp" />
 
-    </TableRow>
+     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+     <TableRow
+         android:id="@+id/tableRow2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/LivroLabelTextView"
-            android:text="@string/rotuloSexo"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
+         <TextView
+             android:id="@+id/textView2"
+             style="@style/LivroLabelTextView"
+             android:text="@string/rotuloSexo"
+             android:textColor="@color/preto"
+             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/lblSexo"
-            style="@style/CriancaTextView"
-            android:text="@string/sexo"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
+         <TextView
+             android:id="@+id/lblSexo"
+             style="@style/CriancaTextView"
+             android:text="@string/sexo"
+             android:textColor="@color/preto"
+             android:textSize="20sp" />
 
-    </TableRow>
+     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+     <TableRow
+         android:id="@+id/tableRow3"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/textView3"
-            style="@style/LivroLabelTextView"
-            android:layout_height="match_parent"
-            android:text="@string/rotuloDtNascimento"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
+         <TextView
+             android:id="@+id/textView3"
+             style="@style/LivroLabelTextView"
+             android:layout_height="match_parent"
+             android:text="@string/rotuloDtNascimento"
+             android:textColor="@color/preto"
+             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/lblNascimento"
-            style="@style/CriancaTextView"
-            android:text="@string/dtnascimento"
-            android:textColor="@color/preto"
-            android:textSize="20sp" />
+         <TextView
+             android:id="@+id/lblNascimento"
+             style="@style/CriancaTextView"
+             android:text="@string/dtnascimento"
+             android:textColor="@color/preto"
+             android:textSize="20sp" />
 
-    </TableRow>
+     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dp"/>
+      <TableRow
+          android:id="@+id/tableRow4"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:padding="10dp"/>
 
-    <TableRow
-        android:id="@+id/tableRowButtons"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+      <TableRow
+          android:id="@+id/tableRowButtons"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent">
 
-        <Button
-            android:id="@+id/btnAdicionar"
-            android:width="30dp"
-            android:text="@string/btn_adicionar_progresso" />
+          <Button
+              android:id="@+id/btnAdicionar"
+              android:text="@string/btn_adicionar_progresso" />
 
-        <Button
-            android:id="@+id/btnRemover"
-            android:width="30dp"
-            android:text="@string/btn_remover_progresso" />
-    </TableRow>
+          <Button
+              android:id="@+id/btnRemover"
+              android:text="@string/btn_remover_progresso" />
+      </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRowListView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+     <TableRow
+         android:id="@+id/tableRowListView"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent">
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_span="2"
-            android:layout_gravity="center_vertical"
-            android:layout_width="match_parent"/>
-    </TableRow>
+         <ListView
+             android:id="@+id/listViewProgresso"
+             android:layout_span="2"
+             android:layout_gravity="center_vertical"
+             android:layout_width="match_parent"/>
+     </TableRow>
 </TableLayout>

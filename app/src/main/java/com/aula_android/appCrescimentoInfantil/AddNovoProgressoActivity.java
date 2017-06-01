@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -132,14 +133,16 @@ public class AddNovoProgressoActivity extends AppCompatActivity {
     // Salva o progress na base de dados
     private void salvaProgresso(){
         DBAdapter databaseConnector = new DBAdapter(this);
-        int pid = Integer.parseInt(MainActivity.LINHA_ID);
+        Bundle extras = getIntent().getExtras();
+        long idLinha = extras.getLong(MainActivity.LINHA_ID);
+
         float pesoTemp = Float.parseFloat(txtPeso.getText().toString());
         float alturaTemp = Float.parseFloat(txtAltura.getText().toString());
 
         try{
             databaseConnector.open();
             databaseConnector.insereDesenvolvimento(
-                    pid,
+                    idLinha,
                     pesoTemp,
                     alturaTemp,
                     txtDtAtualizacao.getText().toString()
