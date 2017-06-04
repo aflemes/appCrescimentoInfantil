@@ -25,7 +25,7 @@ public class DBAdapter {
     private static final String DATABASE_NAME = "databse";
     private static final String DATABASE_TABLE_CRIANCA = "crianca";
     private static final String DATABASE_TABLE_DESENV  = "desenvolvimento_crianca";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private static final String CRIA_TABELA_CRIANCA = "create table crianca " +
             "(_id integer primary key autoincrement, " +
@@ -36,8 +36,8 @@ public class DBAdapter {
     private static final String CRIA_TABELA_DESENVOLVIMENTO = "create table desenvolvimento_crianca " +
             "(_id integer," +
             " dtatualizacao text not null, " +
-            " peso real not null," +
-            " altura real not null," +
+            " peso text not null," +
+            " altura text not null," +
             " primary key(_id,dtatualizacao));";
 
     private final Context context;
@@ -97,7 +97,7 @@ public class DBAdapter {
         return db.insert(DATABASE_TABLE_CRIANCA, null, dados);
     }
 
-    public long insereDesenvolvimento(long pid, float altura, float peso, String dtAtualizacao){
+    public long insereDesenvolvimento(long pid, String altura, String peso, String dtAtualizacao){
         ContentValues dados = new ContentValues();
         dados.put(KEY_ROWID, pid);
         dados.put(KEY_PESO, altura);

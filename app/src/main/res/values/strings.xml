@@ -19,6 +19,9 @@
     <string name="lblPeso">Peso</string>
     <string name="lblAltura">Altura</string>
 
+    <string name="lblUnidAltura">cm\'s</string>
+    <string name="lblUnidPeso">kg\'s</string>
+
     <string name="rotuloNome">Nome:</string>
     <string name="rotuloSexo">Sexo:</string>
     <string name="rotuloDtNascimento">Data \nde nascimento:</string>

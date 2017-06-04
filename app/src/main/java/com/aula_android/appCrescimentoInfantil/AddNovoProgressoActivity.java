@@ -93,10 +93,19 @@ public class AddNovoProgressoActivity extends AppCompatActivity {
 
     private void showDate(int mYear, int mMonth, int mDay) {
         SimpleDateFormat simpleDate =  new SimpleDateFormat("dd/MM/yyyy");
+        String tDay = "", tMonth = "", tYear = "";
+
+        if (mDay < 10)
+            tDay = "0";
+        tDay = tDay + String.valueOf(mDay);
+
+        if (mMonth < 10)
+            tMonth = "0";
+        tMonth = tMonth + String.valueOf(mMonth + 1);
 
         dateView.setText(new StringBuilder()
-                .append(mDay).append("-")
-                .append(mMonth + 1).append("-")
+                .append(tDay).append("/")
+                .append(tMonth).append("/")
                 .append(mYear).append(" "));
     }
 
@@ -136,15 +145,12 @@ public class AddNovoProgressoActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         long idLinha = extras.getLong(MainActivity.LINHA_ID);
 
-        float pesoTemp = Float.parseFloat(txtPeso.getText().toString());
-        float alturaTemp = Float.parseFloat(txtAltura.getText().toString());
-
         try{
             databaseConnector.open();
             databaseConnector.insereDesenvolvimento(
                     idLinha,
-                    pesoTemp,
-                    alturaTemp,
+                    txtPeso.getText().toString(),
+                    txtAltura.getText().toString(),
                     txtDtAtualizacao.getText().toString()
             );
 

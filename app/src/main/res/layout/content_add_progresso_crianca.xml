@@ -22,42 +22,66 @@
 
     <EditText
         android:id="@+id/txtDtAtualizacao"
-        android:layout_width="match_parent"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:onClick="setDate"
         android:maxLength="10"
         android:ems="10" />
 
-    <TextView
-        android:id="@+id/textViewPeso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblPeso"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/txtPeso"
+    <android.support.v7.widget.FitWindowsLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="10"
-        android:ems="10" />
+        android:layout_height="50dp">
 
-    <TextView
-        android:id="@+id/textViewAltura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblAltura"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/textViewPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lblPeso"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/txtAltura"
+        <EditText
+            android:id="@+id/txtPeso"
+            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/textViewPesoHelper"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="@string/lblUnidPeso"/>
+
+    </android.support.v7.widget.FitWindowsLinearLayout>
+
+    <android.support.v7.widget.FitWindowsLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="10"
-        android:ems="10" />
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/textViewAltura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lblAltura"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/txtAltura"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/textViewAlturaHelper"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="@string/lblUnidAltura"/>
+
+    </android.support.v7.widget.FitWindowsLinearLayout>
 
     <Button
         android:id="@+id/btnSalvar"

@@ -147,10 +147,19 @@ public class AddNovaCriancaActivity extends AppCompatActivity {
 
     private void showDate(int mYear, int mMonth, int mDay) {
         SimpleDateFormat simpleDate =  new SimpleDateFormat("dd/MM/yyyy");
+        String tDay = "", tMonth = "", tYear = "";
+
+        if (mDay < 10)
+            tDay = "0";
+        tDay = tDay + String.valueOf(mDay);
+
+        if (mMonth < 10)
+            tMonth = "0";
+        tMonth = tMonth + String.valueOf(mMonth + 1);
 
         dateView.setText(new StringBuilder()
-                        .append(mDay).append("-")
-                        .append(mMonth + 1).append("-")
-                        .append(mYear).append(" "));
+                .append(tDay).append("/")
+                .append(tMonth).append("/")
+                .append(mYear).append(" "));
     }
 }

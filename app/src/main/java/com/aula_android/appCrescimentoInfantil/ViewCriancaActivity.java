@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
@@ -24,6 +26,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
     /**/
     private ListView progressoListView;
     public static final String LINHA_ID = "idLinha";
+    public Long LINHA_ID_AUX;
     private long idLinha;
     private TextView lblNome;
     private TextView lblSexo;
@@ -33,6 +36,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
     private CursorAdapter progressoAdapter; // Adaptador para a ListView
     /**/
     private Button btnAdicionar;
+    private Button btnRemover;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,9 @@ public class ViewCriancaActivity extends AppCompatActivity {
         btnAdicionar = (Button) findViewById(R.id.btnAdicionar);
         btnAdicionar.setOnClickListener(openAdicionarProgresso);
 
+        btnRemover = (Button) findViewById(R.id.btnRemover);
+        btnRemover.setOnClickListener(deleteRecord);
+
         // mapeia cada coluna da tabela com um componente da tela
         String[] origem = new String[]{"dtatualizacao","peso","altura"};
         int[] destino = new int[] { R.id.txtNome, R.id.spiSexo,R.id.txtDtNascimento};
@@ -61,6 +68,19 @@ public class ViewCriancaActivity extends AppCompatActivity {
 
         progressoAdapter = new SimpleCursorAdapter(ViewCriancaActivity.this,R.layout.activity_view_crianca,null,origem,destino,flags);
         progressoListView.setAdapter(progressoAdapter);
+
+        progressoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                for (int j = 0; j < adapterView.getChildCount(); j++)
+                    adapterView.getChildAt(j).setBackgroundColor(Color.LTGRAY);
+
+                // change the background color of the selected element
+                view.setBackgroundColor(Color.GRAY);
+                //
+                LINHA_ID_AUX = id;
+            }
+        });
     }
 
     View.OnClickListener openAdicionarProgresso = new View.OnClickListener() {
@@ -68,6 +88,49 @@ public class ViewCriancaActivity extends AppCompatActivity {
             Intent addProgressoCrianca = new Intent(getApplicationContext(), AddNovoProgressoActivity.class);
             addProgressoCrianca.putExtra(LINHA_ID, idLinha);
             startActivity(addProgressoCrianca);
+        }
+    };
+
+    View.OnClickListener deleteRecord = new View.OnClickListener() {
+        public void onClick(View v) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(ViewCriancaActivity.this);
+
+            builder.setTitle(R.string.confirmaTitulo);
+            builder.setMessage(R.string.confirmaMensagemSelecao);
+
+            // provide an OK button that simply dismisses the dialog
+            builder.setPositiveButton(R.string.botao_delete,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int button) {
+                            final DBAdapter conexaoDB = new DBAdapter(ViewCriancaActivity.this);
+
+                            AsyncTask<Long, Object, Object> deleteTask = new AsyncTask<Long, Object, Object>(){
+                                @Override
+                                protected Object doInBackground(Long... params){
+                                    try{
+                                        conexaoDB.open();
+                                        conexaoDB.excluiDesenvolvimento(LINHA_ID_AUX);
+                                        conexaoDB.close();
+                                    }
+                                    catch(SQLException e){
+                                        e.printStackTrace();
+                                    }
+                                    return null;
+                                }
+
+                                @Override
+                                protected void onPostExecute(Object result){
+                                    finish();
+                                }
+                            };
+
+
+                            deleteTask.execute(new Long[] { idLinha });
+                        }
+                    }); // finaliza o  método setPositiveButton
+
+            builder.setNegativeButton(R.string.botao_cancel, null);
+            builder.show();
         }
     };
 
