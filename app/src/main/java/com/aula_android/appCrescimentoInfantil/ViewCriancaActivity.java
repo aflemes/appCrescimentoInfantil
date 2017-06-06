@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
@@ -37,6 +38,8 @@ public class ViewCriancaActivity extends AppCompatActivity {
     /**/
     private Button btnAdicionar;
     private Button btnRemover;
+    /**/
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -209,9 +212,17 @@ public class ViewCriancaActivity extends AppCompatActivity {
             case R.id.deleteItem:
                 deleteCrianca();
                 return true;
+            case R.id.gerarGraficoItem:
+                gerarGrafico();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void gerarGrafico(){
+        Intent intent = new Intent(this, WebViewActivity.class);
+        startActivity(intent);
     }
 
     private void deleteCrianca(){

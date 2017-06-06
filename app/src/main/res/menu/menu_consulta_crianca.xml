@@ -12,7 +12,7 @@
         android:titleCondensed="@string/menuitem_delete_crianca"
         android:icon="@android:drawable/ic_delete">
     </item>
-    <item android:id="@+id/deleteItem"
+    <item android:id="@+id/gerarGraficoItem"
         android:title="@string/menuitem_gerar_grafico"
         android:orderInCategory="2" android:alphabeticShortcut="d"
         android:titleCondensed="@string/menuitem_gerar_grafico"
