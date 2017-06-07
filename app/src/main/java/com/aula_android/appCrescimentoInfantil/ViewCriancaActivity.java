@@ -23,10 +23,13 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ViewCriancaActivity extends AppCompatActivity {
     /**/
     private ListView progressoListView;
     public static final String LINHA_ID = "idLinha";
+    public static final String REGISTROS = "registros";
     public Long LINHA_ID_AUX;
     private long idLinha;
     private TextView lblNome;
@@ -221,8 +224,25 @@ public class ViewCriancaActivity extends AppCompatActivity {
     }
 
     private void gerarGrafico(){
-        Intent intent = new Intent(this, WebViewActivity.class);
-        startActivity(intent);
+        Intent WebViewActivity = new Intent(this, WebViewActivity.class);
+        ArrayList<ArrayList<String>> registros = new ArrayList<ArrayList<String>>();
+        ArrayList<String> temp;
+        Cursor tmpCursor;
+
+        for (int j = 0; j < progressoAdapter.getCount(); j++) {
+            temp = new ArrayList<String>();
+            tmpCursor = progressoAdapter.getCursor();
+
+            temp.add(tmpCursor.getString(tmpCursor.getColumnIndex("dtatualizacao")));
+            temp.add(tmpCursor.getString(tmpCursor.getColumnIndex("peso")));
+            temp.add(tmpCursor.getString(tmpCursor.getColumnIndex("altura")));
+
+            registros.add(temp);
+        }
+
+        WebViewActivity.putExtra(REGISTROS, registros);
+
+        startActivity(WebViewActivity);
     }
 
     private void deleteCrianca(){
