@@ -25,7 +25,7 @@ public class DBAdapter {
     private static final String DATABASE_NAME = "databse";
     private static final String DATABASE_TABLE_CRIANCA = "crianca";
     private static final String DATABASE_TABLE_DESENV  = "desenvolvimento_crianca";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 9;
 
     private static final String CRIA_TABELA_CRIANCA = "create table crianca " +
             "(_id integer primary key autoincrement, " +
@@ -34,11 +34,12 @@ public class DBAdapter {
             " nascimento text not null);" ;
 
     private static final String CRIA_TABELA_DESENVOLVIMENTO = "create table desenvolvimento_crianca " +
-            "(_id integer," +
+            "(_id_desenv integer," +
+            "_id integer," +
             " dtatualizacao text not null, " +
             " peso text not null," +
             " altura text not null," +
-            " primary key(_id,dtatualizacao));";
+            " primary key(_id,_id_desenv));";
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -72,6 +73,7 @@ public class DBAdapter {
             Log.w(TAG, "Atualizando a base de dados a partir da versao " + oldVersion
                     + " para " + newVersion + ",isso irá destruir todos os dados antigos");
             db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_CRIANCA);
+            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_DESENV);
             onCreate(db);
         }
     }

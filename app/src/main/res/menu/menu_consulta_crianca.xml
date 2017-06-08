@@ -12,10 +12,16 @@
         android:titleCondensed="@string/menuitem_delete_crianca"
         android:icon="@android:drawable/ic_delete">
     </item>
-    <item android:id="@+id/gerarGraficoItem"
-        android:title="@string/menuitem_gerar_grafico"
+    <item android:id="@+id/gerarGraficoPesoXIdade"
+        android:title="@string/menuitem_gerar_grafico_pesoxidade"
         android:orderInCategory="2" android:alphabeticShortcut="d"
-        android:titleCondensed="@string/menuitem_gerar_grafico"
+        android:titleCondensed="@string/menuitem_gerar_grafico_pesoxidade"
+        android:icon="@android:drawable/ic_delete">
+    </item>
+    <item android:id="@+id/gerarGraficoPesoXAltura"
+        android:title="@string/menuitem_gerar_grafico_pesoxaltura"
+        android:orderInCategory="2" android:alphabeticShortcut="d"
+        android:titleCondensed="@string/menuitem_gerar_grafico_pesoxaltura"
         android:icon="@android:drawable/ic_delete">
     </item>
 </menu>

@@ -6,7 +6,8 @@
     <string name="menuitem_remove">Remover TODAS da seleção</string>
     <string name="menuitem_edit_crianca">Alterar uma Criança</string>
     <string name="menuitem_delete_crianca">Excluir uma Criança</string>
-    <string name="menuitem_gerar_grafico"> Gráfico do Crescimento</string>
+    <string name="menuitem_gerar_grafico_pesoxidade"> Gráfico do Crescimento Peso x Idade</string>
+    <string name="menuitem_gerar_grafico_pesoxaltura"> Gráfico do Crescimento Peso x Altura</string>
 
     <string name="title_activity_main">Clientes</string>
 

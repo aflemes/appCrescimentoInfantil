@@ -30,6 +30,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
     private ListView progressoListView;
     public static final String LINHA_ID = "idLinha";
     public static final String REGISTROS = "registros";
+    public static final String OPC_GRAFICO = "opc_grafico";
     public Long LINHA_ID_AUX;
     private long idLinha;
     private TextView lblNome;
@@ -215,19 +216,28 @@ public class ViewCriancaActivity extends AppCompatActivity {
             case R.id.deleteItem:
                 deleteCrianca();
                 return true;
-            case R.id.gerarGraficoItem:
-                gerarGrafico();
+            case R.id.gerarGraficoPesoXIdade:
+                gerarGrafico("Idade");
+                return true;
+            case R.id.gerarGraficoPesoXAltura:
+                gerarGrafico("Altura");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void gerarGrafico(){
+    private void gerarGrafico(String opcaoGrafico){
         Intent WebViewActivity = new Intent(this, WebViewActivity.class);
         ArrayList<ArrayList<String>> registros = new ArrayList<ArrayList<String>>();
         ArrayList<String> temp;
         Cursor tmpCursor;
+
+        if (progressoAdapter.getCount() < 2){
+            Toast msg = Toast.makeText(this,"É necessário ao menos dois (2) registros para gerar o gráfico",Toast.LENGTH_LONG);
+            msg.show();
+            return;
+        }
 
         for (int j = 0; j < progressoAdapter.getCount(); j++) {
             temp = new ArrayList<String>();
@@ -242,6 +252,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
         }
 
         WebViewActivity.putExtra(REGISTROS, registros);
+        WebViewActivity.putExtra(OPC_GRAFICO,opcaoGrafico);
 
         startActivity(WebViewActivity);
     }

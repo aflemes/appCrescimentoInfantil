@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -17,6 +18,14 @@ public class WebViewActivity extends AppCompatActivity {
 
     private WebView webView;
     private ArrayList<ArrayList<String>> registros;
+    private String opc_grafico;
+    /* VARIAVEIS GLOBAIS DO GRAFICO*/
+    private String googleURL    = "https://chart.googleapis.com/chart?";
+    private String tipoGrafico  = "cht=lc"; //linhas
+    private String coresGrafico = "&chco=FF6342,ADDE63,63C6DE";
+    private String dimenGrafico = "&chs=360x250";
+    private String dadosGrafico = "&chd=t:";
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
@@ -30,33 +39,46 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webViewCrescimento);
         webView.getSettings().setJavaScriptEnabled(true);
-        /*
-        webView.loadUrl("https://chart.googleapis.com/chart?cht=lc&chco=FF6342,ADDE63,63C6DE&chs=250x100&chd=t:6.92,8.98,10.5,11.6%7C7.5,10.12,12.3,15.25%7C8.76,11.25,13.02,14.33&chl=6%20meses%7C1%20ano%7C1a%206m%7C2%20anos&chdl=Peso%20Min.%7CPeso%20M%C3%A1x.%7C%20Peso");
-        */
+
+        String linhaInteira = "";
+
+        if (opc_grafico.equals("Idade")){
+            linhaInteira = gerar_grafico_idade();
+        }
+        else
+            if (opc_grafico.equals("Altura")){
+                linhaInteira = gerar_grafico_altura();
+            }
+        webView.loadUrl(linhaInteira);
+    }
+
+    private String gerar_grafico_idade(){
+        String titEixoX     = "&chl=6 meses|1 ano|1 a 6m|2 anos";
+        String legGrafico   = "&chdl=Peso";
 
         ArrayList<String> tempNodo;
+
         for (int i = 0; i < registros.size();i ++){
             tempNodo = registros.get(i);
+            dadosGrafico+=tempNodo.get(1);
         }
 
-        String googleURL    = "https://chart.googleapis.com/chart";
-        String tipoGrafico  = "cht=lc"; //linhas
-        String coresGrafico = "&chco=FF6342,ADDE63,63C6DE";
-        String dimenGrafico = "&chs=250x100";
-        String dadosGrafico = "&chd=t:6.92,8.98,10.5,11.6"   + "|" +
-                                      "7.5,10.12,12.3,15.25" + "|" +
-                                      "8.76,11.25,13.02,14.33";
-        String titEixoX     = "&chl=6%20meses|1%20ano|1a%206m|2%20anos";
-        String legGrafico   = "&chdl=Peso%20Min.|Peso%20M%C3%A1x.|%20Peso";
+        return googleURL + tipoGrafico + coresGrafico + dimenGrafico + dadosGrafico + titEixoX + legGrafico;
 
-        webView.loadUrl(googleURL +
-                        tipoGrafico +
-                        coresGrafico +
-                        dimenGrafico +
-                        dadosGrafico +
-                        titEixoX +
-                        legGrafico);
+    }
 
+    private String gerar_grafico_altura(){
+        String titEixoX     = "&chl=6 meses|1 ano|1 a 6m|2 anos";
+        String legGrafico   = "&chdl=Peso";
+
+        ArrayList<String> tempNodo;
+
+        for (int i = 0; i < registros.size();i ++){
+            tempNodo = registros.get(i);
+            dadosGrafico+=tempNodo.get(1);
+        }
+
+        return googleURL + tipoGrafico + coresGrafico + dimenGrafico + dadosGrafico + titEixoX + legGrafico;
     }
 
 }
