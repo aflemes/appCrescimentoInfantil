@@ -241,8 +241,7 @@ public class ViewCriancaActivity extends AppCompatActivity {
 
         for (int j = 0; j < progressoAdapter.getCount(); j++) {
             temp = new ArrayList<String>();
-            tmpCursor = progressoAdapter.getCursor();
-            
+            tmpCursor = (Cursor) progressoAdapter.getItem(j);
 
             temp.add(tmpCursor.getString(tmpCursor.getColumnIndex("dtatualizacao")));
             temp.add(tmpCursor.getString(tmpCursor.getColumnIndex("peso")));

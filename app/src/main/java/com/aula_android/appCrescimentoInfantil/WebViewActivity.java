@@ -26,6 +26,7 @@ public class WebViewActivity extends AppCompatActivity {
     private String dimenGrafico = "&chs=360x250";
     private String dadosGrafico = "&chd=t:";
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
@@ -34,8 +35,8 @@ public class WebViewActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Gráfico do Crescimento");
 
         Bundle extras = getIntent().getExtras();
-        registros =(ArrayList<ArrayList<String>>) extras.getSerializable(ViewCriancaActivity.REGISTROS);
-
+        registros   =(ArrayList<ArrayList<String>>) extras.getSerializable(ViewCriancaActivity.REGISTROS);
+        opc_grafico = extras.getString(ViewCriancaActivity.OPC_GRAFICO);
 
         webView = (WebView) findViewById(R.id.webViewCrescimento);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -53,29 +54,43 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     private String gerar_grafico_idade(){
-        String titEixoX     = "&chl=6 meses|1 ano|1 a 6m|2 anos";
+        String titEixoX     = "&chl=";
         String legGrafico   = "&chdl=Peso";
 
         ArrayList<String> tempNodo;
 
         for (int i = 0; i < registros.size();i ++){
-            tempNodo = registros.get(i);
-            dadosGrafico+=tempNodo.get(1);
+            tempNodo     = registros.get(i);
+
+            if ((i + 1) == registros.size()) {
+                dadosGrafico += tempNodo.get(1);
+                titEixoX     += tempNodo.get(0).toString();
+            }
+            else {
+                dadosGrafico += tempNodo.get(1) + ",";
+                titEixoX     += tempNodo.get(0).toString() + "|";
+            }
         }
-
         return googleURL + tipoGrafico + coresGrafico + dimenGrafico + dadosGrafico + titEixoX + legGrafico;
-
     }
 
     private String gerar_grafico_altura(){
-        String titEixoX     = "&chl=6 meses|1 ano|1 a 6m|2 anos";
+        String titEixoX     = "&chl=";
         String legGrafico   = "&chdl=Peso";
 
         ArrayList<String> tempNodo;
 
         for (int i = 0; i < registros.size();i ++){
-            tempNodo = registros.get(i);
-            dadosGrafico+=tempNodo.get(1);
+            tempNodo     = registros.get(i);
+
+            if ((i + 1) == registros.size()) {
+                dadosGrafico += tempNodo.get(1);
+                titEixoX     += tempNodo.get(2).toString();
+            }
+            else {
+                dadosGrafico += tempNodo.get(1) + ",";
+                titEixoX     += tempNodo.get(2).toString() + "|";
+            }
         }
 
         return googleURL + tipoGrafico + coresGrafico + dimenGrafico + dadosGrafico + titEixoX + legGrafico;
